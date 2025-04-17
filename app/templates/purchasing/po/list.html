@@ -1,0 +1,33 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Purchase Orders - Inventory Management{% endblock %}
+
+{% block content %}
+<h2>Purchase Orders</h2>
+{% include 'partials/search_bar.html' %}
+<table>
+    <thead>
+        <tr>
+            <th>PO ID</th>
+            <th>Vendor</th>
+            <th>Order Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for po in purchase_orders %}
+        <tr>
+            <td>{{ po.id }}</td>
+            <td>{{ po.vendor_name }}</td>
+            <td>{{ po.order_date }}</td>
+            <td>{{ po.status }}</td>
+            <td>
+                <a href="{{ url_for('main.po_view', po_id=po.id) }}">View</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% include 'partials/pagination.html' %}
+{% endblock %}

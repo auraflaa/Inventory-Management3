@@ -1,0 +1,33 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Orders - Inventory Management{% endblock %}
+
+{% block content %}
+<h2>Orders</h2>
+{% include 'partials/search_bar.html' %}
+<table>
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Order Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.customer_name }}</td>
+            <td>{{ order.order_date }}</td>
+            <td>{{ order.status }}</td>
+            <td>
+                <a href="{{ url_for('main.order_view', order_id=order.id) }}">View</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% include 'partials/pagination.html' %}
+{% endblock %}

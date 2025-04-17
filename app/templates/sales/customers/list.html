@@ -1,0 +1,33 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Customer List - Inventory Management{% endblock %}
+
+{% block content %}
+<h2>Customer List</h2>
+{% include 'partials/search_bar.html' %}
+<table>
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for customer in customers %}
+        <tr>
+            <td>{{ customer.id }}</td>
+            <td>{{ customer.first_name }} {{ customer.last_name }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.phone }}</td>
+            <td>
+                <a href="{{ url_for('main.customer_view', customer_id=customer.id) }}">View</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% include 'partials/pagination.html' %}
+{% endblock %}

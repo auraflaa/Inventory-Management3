@@ -1,0 +1,50 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Employee Profile - Inventory Management{% endblock %}
+
+{% block content %}
+<h2>Employee Profile</h2>
+<table>
+    <tr>
+        <th>Employee ID:</th>
+        <td>{{ employee.id }}</td>
+    </tr>
+    <tr>
+        <th>Name:</th>
+        <td>{{ employee.name }}</td>
+    </tr>
+    <tr>
+        <th>Job Title:</th>
+        <td>{{ employee.job_title }}</td>
+    </tr>
+    <tr>
+        <th>Email:</th>
+        <td>{{ employee.email }}</td>
+    </tr>
+    <tr>
+        <th>Phone:</th>
+        <td>{{ employee.phone }}</td>
+    </tr>
+</table>
+<h3>Assigned Orders</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Order Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in employee.orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.customer_name }}</td>
+            <td>{{ order.order_date }}</td>
+            <td>{{ order.status }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

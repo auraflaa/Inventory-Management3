@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Inventory - Inventory Management{% endblock %}
+
+{% block content %}
+<h2>Inventory</h2>
+{% include 'partials/search_bar.html' %}
+<table>
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product[0] }}</td>
+            <td>{{ product[1] }}</td>
+            <td>{{ format_currency(product[3]) }}</td>
+            <td>{{ product[4] }}</td>
+            <td>
+                <a href="{{ url_for('main.inventory_view', product_id=product[0]) }}">View</a> |
+                <a href="{{ url_for('main.inventory_edit', product_id=product[0]) }}">Edit</a> |
+                <a href="{{ url_for('main.inventory_delete', product_id=product[0]) }}" onclick="return confirm('Are you sure?');">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% include 'partials/pagination.html' %}
+{% endblock %}

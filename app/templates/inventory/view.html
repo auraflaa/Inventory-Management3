@@ -1,0 +1,31 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Product Details - Inventory Management{% endblock %}
+
+{% block content %}
+<h2>Product Details</h2>
+<table>
+    <tr>
+        <th>Product Name:</th>
+        <td>{{ product.name }}</td>
+    </tr>
+    <tr>
+        <th>Product Code:</th>
+        <td>{{ product.code }}</td>
+    </tr>
+    <tr>
+        <th>Unit Price:</th>
+        <td>{{ format_currency(product.unit_price) }}</td>
+    </tr>
+    <tr>
+        <th>Quantity:</th>
+        <td>{{ product.quantity }}</td>
+    </tr>
+    <tr>
+        <th>Vendor:</th>
+        <td>{{ product.vendor }}</td>
+    </tr>
+</table>
+<a href="{{ url_for('main.inventory_edit', product_id=product.id) }}">Edit</a>
+<a href="{{ url_for('main.inventory_delete', product_id=product.id) }}" onclick="return confirm('Are you sure?');">Delete</a>
+{% endblock %}

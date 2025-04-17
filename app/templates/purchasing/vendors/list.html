@@ -1,0 +1,33 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Vendors - Inventory Management{% endblock %}
+
+{% block content %}
+<h2>Vendors</h2>
+{% include 'partials/search_bar.html' %}
+<table>
+    <thead>
+        <tr>
+            <th>Vendor ID</th>
+            <th>Company Name</th>
+            <th>Contact</th>
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for vendor in vendors %}
+        <tr>
+            <td>{{ vendor.id }}</td>
+            <td>{{ vendor.name }}</td>
+            <td>{{ vendor.contact }}</td>
+            <td>{{ vendor.phone }}</td>
+            <td>
+                <a href="{{ url_for('main.vendor_view', vendor_id=vendor.id) }}">View</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% include 'partials/pagination.html' %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Employee List - Inventory Management{% endblock %}
+
+{% block content %}
+<h2>Employee List</h2>
+{% include 'partials/search_bar.html' %}
+<table>
+    <thead>
+        <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Job Title</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.first_name }} {{ employee.last_name }}</td>
+            <td>{{ employee.job_title }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.phone }}</td>
+            <td>
+                <a href="{{ url_for('main.employee_view', employee_id=employee.id) }}">View</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% include 'partials/pagination.html' %}
+{% endblock %}

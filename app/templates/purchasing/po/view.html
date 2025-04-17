@@ -1,0 +1,46 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Purchase Order Details - Inventory Management{% endblock %}
+
+{% block content %}
+<h2>Purchase Order Details</h2>
+<table>
+    <tr>
+        <th>PO ID:</th>
+        <td>{{ po.id }}</td>
+    </tr>
+    <tr>
+        <th>Vendor:</th>
+        <td>{{ po.vendor_name }}</td>
+    </tr>
+    <tr>
+        <th>Order Date:</th>
+        <td>{{ po.order_date }}</td>
+    </tr>
+    <tr>
+        <th>Status:</th>
+        <td>{{ po.status }}</td>
+    </tr>
+</table>
+<h3>Order Items</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Unit Cost</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in po.items %}
+        <tr>
+            <td>{{ item.product_name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ format_currency(item.unit_cost) }}</td>
+            <td>{{ format_currency(item.total_cost) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

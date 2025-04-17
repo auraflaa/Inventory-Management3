@@ -1,0 +1,42 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Vendor Details - Inventory Management{% endblock %}
+
+{% block content %}
+<h2>Vendor Details</h2>
+<table>
+    <tr>
+        <th>Company Name:</th>
+        <td>{{ vendor.name }}</td>
+    </tr>
+    <tr>
+        <th>Contact:</th>
+        <td>{{ vendor.contact }}</td>
+    </tr>
+    <tr>
+        <th>Phone:</th>
+        <td>{{ vendor.phone }}</td>
+    </tr>
+    <tr>
+        <th>Address:</th>
+        <td>{{ vendor.address }}</td>
+    </tr>
+</table>
+<h3>Supplied Products</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Unit Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in vendor.products %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ format_currency(product.unit_price) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,16 @@
+<div class="modal" id="{{ modal_id }}">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('{{ modal_id }}')">&times;</span>
+        <h2>{{ modal_title }}</h2>
+        <p>{{ modal_body }}</p>
+        <div class="modal-actions">
+            <button onclick="closeModal('{{ modal_id }}')">Cancel</button>
+            <button onclick="{{ modal_action }}">Confirm</button>
+        </div>
+    </div>
+</div>
+<script>
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+    }
+</script>

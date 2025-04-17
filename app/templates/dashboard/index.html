@@ -1,0 +1,15 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Dashboard - Inventory Management{% endblock %}
+
+{% block content %}
+<h2>Dashboard</h2>
+<section>
+    <h3>Overview</h3>
+    <ul>
+        <li>Total Products: {{ total_products }}</li>
+        <li>Pending Orders: {{ pending_orders }}</li>
+        <li>Total Customers: {{ total_customers }}</li>
+    </ul>
+</section>
+{% endblock %}

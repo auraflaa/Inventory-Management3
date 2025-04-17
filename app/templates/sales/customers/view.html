@@ -1,0 +1,44 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Customer Profile - Inventory Management{% endblock %}
+
+{% block content %}
+<h2>Customer Profile</h2>
+<table>
+    <tr>
+        <th>Name:</th>
+        <td>{{ customer.name }}</td>
+    </tr>
+    <tr>
+        <th>Email:</th>
+        <td>{{ customer.email }}</td>
+    </tr>
+    <tr>
+        <th>Phone:</th>
+        <td>{{ customer.phone }}</td>
+    </tr>
+    <tr>
+        <th>Address:</th>
+        <td>{{ customer.address }}</td>
+    </tr>
+</table>
+<h3>Order History</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in customer.orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.date }}</td>
+            <td>{{ order.status }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
